@@ -15,6 +15,8 @@ $strt->pickSlot($myBoard);
 echo "Random Slot";
 printBoard($myBoard->table);
 
+
+
 function printBoard($arr){
     for($i=0; $i<count($arr); $i++){
         echo "\r\n";
