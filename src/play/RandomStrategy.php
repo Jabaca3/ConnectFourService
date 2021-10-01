@@ -12,19 +12,24 @@ class RandomStrategy extends MoveStrategy{
     //return random coordinates of empty position 
     public function pickSlot(Board $board){
 
-        //Finding empty position on board
+        // Making list of empty columns at top row
         $table1 = $board->table;
         $list= array();
-        for($i=0; $i<count($table1); $i++){
-            for($j=0; $j<count($table1[$i]); $j++){
-                if($table1[$i][$j]==0){
-                   array_push($list, [$i,$j]);
+        for($i=0; $i<=count($table1); $i++){
+            if($table1[0][$i] == 0){
+                array_push($list, $i);
                 }
             }
+        // Picking a random empty slot from $list
+        $r_column = $list[rand(0, count($list)-1)];
+
+        // Selecting proper row and breaking
+        for($j=$board->row-1; $j >= 0; $j--){
+            if($table1[$j][$r_column] == 0){
+                $board->table[$j][$r_column] =2;
+                break;
+            }
         }
-        //Picking a random empty position
-        $r = rand(0, count($list));
-        $board->table[$list[$r][0]][$list[$r][1]] = 1;
         return $board;
     }
 }

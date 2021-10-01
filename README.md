@@ -1,3 +1,3 @@
 # ProgLang
 
-# Creating github repo to use accross different devices
+# Creating github repo for source control accross different devices
